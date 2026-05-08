@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Agregar Usuario</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body class="min-h-screen bg-[#252b31] text-gray-100 flex items-center justify-center">
+
+<div class="w-full max-w-2xl bg-[#343a40] border border-gray-600 rounded shadow-2xl">
+
+    <!-- HEADER MODAL -->
+    <div class="flex items-center justify-between px-5 py-4 border-b border-gray-600">
+        <h1 class="text-2xl font-semibold text-white"
+            th:text="${usuarios.id == null} ? 'Agregar usuario' : 'Editar usuario'">
+            Agregar usuario
+        </h1>
+
+        <a th:href="@{/view/usuarios}"
+           class="text-gray-400 hover:text-white text-2xl font-bold">
+            ×
+        </a>
+    </div>
+
+    <!-- FORMULARIO -->
+    <form th:action="@{/view/usuarios/save}"
+          th:object="${usuarios}"
+          method="post"
+          novalidate>
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div class="px-5 py-5 space-y-4">
+
+            <!-- TIPO Y DOCUMENTO -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <select th:field="*{tipo_documento}"
+                        class="w-full bg-[#343a40] border border-gray-500 rounded px-4 py-3 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Tipo...</option>
+                    <option value="CC">CC</option>
+                    <option value="TI">TI</option>
+                    <option value="CE">CE</option>
+                    <option value="ID">ID</option>
+                </select>
+
+                <div class="flex">
+                    <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                        🪪
+                    </span>
+                    <input type="text"
+                           th:field="*{documento_id}"
+                           placeholder="Numero identificación"
+                           class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+
+            </div>
+
+            <!-- NOMBRE -->
+            <div class="flex">
+                <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                    👤
+                </span>
+                <input type="text"
+                       th:field="*{nombre}"
+                       placeholder="Nombre"
+                       class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- APELLIDOS -->
+            <div class="flex">
+                <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                    👤
+                </span>
+                <input type="text"
+                       th:field="*{apellido}"
+                       placeholder="Apellidos"
+                       class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- FECHA NACIMIENTO -->
+            <div>
+                <label class="block mb-2 font-bold text-white">
+                    Fecha de nacimiento
+                </label>
+
+                <div class="flex">
+                    <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                        📅
+                    </span>
+                    <input type="date"
+                           th:field="*{fecha_nacimiento}"
+                           class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+
+            <!-- CORREO -->
+            <div class="flex">
+                <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                    ✉️
+                </span>
+                <input type="email"
+                       th:field="*{correo}"
+                       placeholder="Correo"
+                       class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- ROL -->
+            <div class="flex">
+                <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                    👥
+                </span>
+
+                <select th:field="*{rol}"
+                        class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Seleccionar rol...</option>
+                    <option value="Administrador">Administrador</option>
+                    <option value="Bienestar">Bienestar</option>
+                    <option value="Financiera">Financiera</option>
+                    <option value="Aprendiz">Aprendiz</option>
+                </select>
+            </div>
+
+            <!-- FICHA -->
+            <div class="flex">
+                <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                    🧾
+                </span>
+                <input type="text"
+                       th:field="*{ficha}"
+                       placeholder="Ficha"
+                       class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+
+            <!-- ESTADO -->
+            <div class="flex">
+                <span class="w-14 flex items-center justify-center bg-[#343a40] border border-r-0 border-gray-500 rounded-l text-white">
+                    ✅
+                </span>
+
+                <select th:field="*{estado}"
+                        class="w-full bg-[#343a40] border border-gray-500 rounded-r px-4 py-3 text-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option value="">Seleccionar estado...</option>
+                    <option value="activo">activo</option>
+                    <option value="inactivo">inactivo</option>
+                </select>
+            </div>
+
+        </div>
+
+        <!-- FOOTER MODAL -->
+        <div class="flex justify-between md:justify-end gap-3 px-5 py-4 border-t border-gray-600">
+            <a th:href="@{/view/usuarios}"
+               class="border border-gray-500 hover:bg-gray-600 text-white px-5 py-2 rounded">
+                Cerrar
+            </a>
+
+            <button type="submit"
+                    class="bg-[#3f6fa3] hover:bg-[#4d7fb5] text-white px-5 py-2 rounded font-semibold">
+                Guardar
+            </button>
+        </div>
+
+    </form>
+
+</div>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>

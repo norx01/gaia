@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuarios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+<body class="min-h-screen bg-[#46525a] text-gray-100">
+
+<div class="flex min-h-screen">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-[#2f363d] min-h-screen shadow-xl hidden md:block">
+
+        <div class="h-14 flex items-center px-4 border-b border-gray-700">
+            <h1 class="text-xl font-bold tracking-wide text-gray-200">GAIA</h1>
+        </div>
+
+        <div class="flex items-center gap-3 px-5 py-5 border-b border-gray-700">
+            <div class="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center">
+                👤
+            </div>
+            <span class="text-sm font-semibold text-gray-200">Germán Ramírez</span>
+        </div>
+
+        <nav class="px-2 py-4 text-sm">
+
+            <a href="#" class="flex items-center justify-between bg-[#3f6fa3] text-white px-4 py-3 rounded mb-2">
+                <span>⚙️ Configuración</span>
+                <span>⌄</span>
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                ○ Apoyos
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                ○ Sedes
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                ○ Usuarios
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                ○ Fichas
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                🎲 Identificación de apoyos
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                🖊️ Inscripciones
+            </a>
+
+            <a href="#" class="flex items-center justify-between bg-[#50575d] text-white px-4 py-3 rounded mt-2 mb-2">
+                <span>💵 Gestión</span>
+                <span>⌄</span>
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                ○ Verificación
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                ○ Puntuación
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded mt-2">
+                💵 Financiera
+            </a>
+
+            <a href="#" class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+                📊 Reportes
+            </a>
+
+        </nav>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="flex-1 flex flex-col">
+
+        <!-- NAVBAR SUPERIOR -->
+        <header class="h-14 bg-[#343b42] border-b border-gray-700 flex items-center justify-between px-5 shadow">
+            <div class="flex items-center gap-8">
+                <button class="text-gray-300 text-xl">☰</button>
+                <a href="#" class="text-sm text-gray-200 hover:text-white">Home</a>
+                <a href="#" class="text-sm text-gray-200 hover:text-white">Contact</a>
+            </div>
+
+            <div class="flex items-center gap-5 text-sm">
+                <span>🔔</span>
+                <a href="#" class="font-semibold hover:text-white">Cerrar sesión</a>
+                <span>⛶</span>
+            </div>
+        </header>
+
+        <!-- AREA PRINCIPAL -->
+        <section class="flex-1 p-4 md:p-6">
+
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-2xl font-medium text-white">Usuarios</h2>
+
+                <div class="text-sm text-gray-300">
+                    <span class="text-blue-400">Inicio</span>
+                    <span class="mx-1">/</span>
+                    <span>Usuarios</span>
+                </div>
+            </div>
+
+            <div th:if="${success}"
+                 class="mb-4 bg-emerald-600 text-white px-4 py-3 rounded shadow"
+                 th:text="${success}">
+            </div>
+
+            <!-- CARD -->
+            <div class="bg-[#2f353b] rounded shadow-xl p-4 md:p-5">
+
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                    <h3 class="text-xl font-bold uppercase text-white">Usuarios</h3>
+
+                    <div class="flex gap-2">
+                        <a th:href="@{/view/usuarios/excel}"
+                           class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded text-sm font-semibold">
+                            Excel
+                        </a>
+
+                        <a th:href="@{/view/usuarios/pdf}"
+                           class="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded text-sm font-semibold">
+                            PDF
+                        </a>
+
+                        <a th:href="@{/view/usuarios/form}"
+                           class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded text-sm font-semibold">
+                            Agregar Usuario
+                        </a>
+                    </div>
+                </div>
+
+                <div class="flex justify-end mb-3">
+                    <label class="text-sm text-gray-200 mr-2 mt-2">Search:</label>
+                    <input type="text"
+                           class="bg-[#2b3035] border border-gray-500 rounded px-3 py-1 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full border border-gray-600 text-sm">
+                        <thead>
+                        <tr class="bg-[#168b4f] text-white">
+                            <th class="px-3 py-3 border border-gray-600 text-left">ID</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Tipo de Documento</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">N° de Documento</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Nombre</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Apellidos</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Correo</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Ficha</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Rol</th>
+                            <th class="px-3 py-3 border border-gray-600 text-left">Estado</th>
+                            <th class="px-3 py-3 border border-gray-600 text-center">Acciones</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="usuario : ${usuarios}"
+                            class="bg-[#252b31] hover:bg-[#303840] border-b border-gray-600">
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.id}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.tipo_documento}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.documento_id}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.nombre}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.apellido}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.correo}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.ficha}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600" th:text="${usuario.rol}"></td>
+
+                            <td class="px-3 py-3 border border-gray-600">
+                                <span class="bg-emerald-500 text-white text-xs px-2 py-1 rounded"
+                                      th:text="${usuario.estado}">
+                                </span>
+                            </td>
+
+                            <td class="px-3 py-3 border border-gray-600">
+                                <div class="flex justify-center gap-1">
+                                    <a th:href="@{'/view/usuarios/edit/' + ${usuario.id}}"
+                                       class="border border-gray-300 hover:bg-gray-600 text-white px-2 py-1 rounded text-xs">
+                                        ✏️
+                                    </a>
+
+                                    <form th:action="@{'/view/usuarios/delete/' + ${usuario.id}}"
+                                          method="post">
+                                        <button type="submit"
+                                                class="border border-gray-300 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
+                                                onclick="return confirm('¿Está seguro que desea eliminar este Usuario?')">
+                                            🗑️
+                                        </button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between items-center gap-3 mt-4 text-sm text-gray-300">
+                    <p>Showing 1 to <span th:text="${#lists.size(usuarios)}"></span> entries</p>
+
+                    <div class="flex">
+                        <button class="px-3 py-2 border border-gray-600 rounded-l text-gray-500" disabled>
+                            Previous
+                        </button>
+                        <button class="px-3 py-2 border border-blue-600 bg-blue-600 text-white">
+                            1
+                        </button>
+                        <button class="px-3 py-2 border border-gray-600 rounded-r text-gray-400">
+                            Next
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="h-14 bg-[#343b42] border-t border-gray-700 flex items-center justify-between px-5 text-xs text-gray-400">
+            <p>Copyright © 2026 <span class="text-blue-400 font-bold">ADSO 3063989</span>. All rights reserved.</p>
+            <p>Version 0.0.0</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script th:src="@{/js/script.js}"></script>
+</body>
+</html>
