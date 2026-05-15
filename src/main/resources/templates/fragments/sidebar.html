@@ -1,0 +1,94 @@
+<!-- fragments/sidebar.html -->
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- SIDEBAR -->
+<aside th:fragment="sidebar"
+       class="w-64 bg-[#2f363d] min-h-screen shadow-xl hidden md:block">
+
+    <div class="h-14 flex items-center px-4 border-b border-gray-700">
+        <h1 class="text-xl font-bold tracking-wide text-gray-200">GAIA</h1>
+    </div>
+
+    <div class="flex items-center gap-3 px-5 py-5 border-b border-gray-700">
+        <div class="w-10 h-10 rounded-full bg-gray-500 flex items-center justify-center">
+            👤
+        </div>
+
+        <!-- Nombre dinámico -->
+        <span class="text-sm font-semibold text-gray-200"
+              th:text="${usuario != null ? usuario.nombre : 'Usuario'}">
+            Germán Ramírez
+        </span>
+    </div>
+
+    <nav class="px-2 py-4 text-sm">
+
+        <a th:href="@{/configuracion}"
+           class="flex items-center justify-between bg-[#3f6fa3] text-white px-4 py-3 rounded mb-2">
+            <span>⚙️ Configuración</span>
+            <span>⌄</span>
+        </a>
+
+        <a th:href="@{/apoyos}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            ○ Apoyos
+        </a>
+
+        <a th:href="@{/sedes}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            ○ Sedes
+        </a>
+
+        <a th:href="@{/usuarios}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            ○ Usuarios
+        </a>
+
+        <a th:href="@{/fichas}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            ○ Fichas
+        </a>
+
+        <a th:href="@{/identificacion-apoyos}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            🎲 Identificación de apoyos
+        </a>
+
+        <a th:href="@{/inscripciones}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            🖊️ Inscripciones
+        </a>
+
+        <a href="#"
+           class="flex items-center justify-between bg-[#50575d] text-white px-4 py-3 rounded mt-2 mb-2">
+            <span>💵 Gestión</span>
+            <span>⌄</span>
+        </a>
+
+        <a th:href="@{/verificacion}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            ○ Verificación
+        </a>
+
+        <a th:href="@{/puntuacion}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            ○ Puntuación
+        </a>
+
+        <a th:href="@{/financiera}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded mt-2">
+            💵 Financiera
+        </a>
+
+        <a th:href="@{/reportes}"
+           class="flex items-center gap-3 px-4 py-2 text-gray-300 hover:bg-gray-700 rounded">
+            📊 Reportes
+        </a>
+
+    </nav>
+</aside>
+
+</body>
+</html>
